@@ -10,28 +10,16 @@ require_once('models/posts.php');
 
 function getCommentsOfPostController($postId){
     $commsList = getCommsListFromDB($postId);
-    $tableData = '';
-    foreach($commsList as $commItem){
-        $tableData.="<tr>";
-        foreach ($commItem as $key=>$attr){
-            $tableData.="<td>";
-            $tableData.=$attr;
-            $tableData.="</td>";
-        }
-        $tableData.="</tr>";
-    }
-    if(count($commsList) == 0){
-        $tableData.="<p>Pas de commentaires pour ce post</p>";
-    }
+    
 
     $postInfo = getPostFromDB($postId);
+
     if(count($postInfo) == 1){
         $title = $postInfo[0]["title"];
         $description = $postInfo[0]["description"];
     } else {
         $title = "Ce post n'existe pas";
         $description = "";
-        $tableData = "";
     }
 
     require_once('views/header.php');

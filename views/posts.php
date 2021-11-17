@@ -12,7 +12,20 @@
                 </tr>
             </thead>
             <tbody>
-                <?=$tableData;?>
+                <?php 
+                    $tableData = '';
+                    foreach($postList as $postItem){
+                        $tableData.="<tr>";
+                        foreach ($postItem as $attr){
+                            $tableData.="<td>";
+                            $tableData.=$attr;
+                            $tableData.="</td>";
+                        }
+                        $tableData.="<td><a href='index.php?action=comments-list&post_id=".$postItem["id"]."'>Voir</a></td>";
+                        $tableData.="</tr>";
+                    }
+                    print_r($tableData);
+                ?>
             </tbody>
         </table>
     </main>

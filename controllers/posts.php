@@ -4,17 +4,6 @@ require_once('models/posts.php');
 
 function getPostsListController(){
     $postList = getPostsListFromDB();
-    $tableData = '';
-    foreach($postList as $postItem){
-        $tableData.="<tr>";
-        foreach ($postItem as $attr){
-            $tableData.="<td>";
-            $tableData.=$attr;
-            $tableData.="</td>";
-        }
-        $tableData.="<td><a href='index.php?action=comments-list&post_id=".$postItem["id"]."'>Voir</a></td>";
-        $tableData.="</tr>";
-    }
 
     require_once('views/header.php');
     require_once('views/posts.php');

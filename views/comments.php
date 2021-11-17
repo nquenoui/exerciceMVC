@@ -12,7 +12,22 @@
                 </tr>
             </thead>
             <tbody>
-                <?=$tableData;?>
+                <?php
+                    $tableData = "";
+                    foreach($commsList as $commItem){
+                        $tableData.="<tr>";
+                        foreach ($commItem as $key=>$attr){
+                            $tableData.="<td>";
+                            $tableData.=$attr;
+                            $tableData.="</td>";
+                        }
+                        $tableData.="</tr>";
+                    }
+                    if(count($commsList) == 0){
+                        $tableData.="<p>Pas de commentaires pour ce post</p>";
+                    }
+                    print_r($tableData);
+                ?>
             </tbody>
         </table>
     </main>
